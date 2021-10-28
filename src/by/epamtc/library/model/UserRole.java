@@ -1,6 +1,6 @@
 package by.epamtc.library.model;
 
 public class UserRole {
-    int id;
-    String role;
+    private int id;
+    private String role;
 }
