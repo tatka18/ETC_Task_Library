@@ -1,18 +1,24 @@
 package by.epamtc.library.controller;
 
+import by.epamtc.library.controller.impl.AuthorizationCommand;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class CommandProvider {
-    private Map<CommandName, Command> commands = new HashMap<CommandName, Command>();
+    private final Map<CommandName, Command> commands = new HashMap<>();
 
-//    public Command getCommand(String strCommandName) {
-//        CommandName commandName;
-//        Command command;
-//
-//        commandName = CommandName.valueOf(strCommandName.toUpperCase());
-//        command = commands.get(commandName);
-//
-//        return command;
-//    }
+    CommandProvider(){
+        commands.put(CommandName.AUTHORIZATION, new AuthorizationCommand());
+    }
+
+    public Command getCommand(String stringCommandName) {
+        CommandName commandName;
+        Command command;
+
+        commandName = CommandName.valueOf(stringCommandName.toUpperCase());
+        command = commands.get(commandName);
+
+        return command;
+    }
 }
