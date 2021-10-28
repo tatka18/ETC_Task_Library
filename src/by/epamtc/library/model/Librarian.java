@@ -1,7 +1,7 @@
 package by.epamtc.library.model;
 
 public class Librarian extends User{
-    long caseNumber;
-    String dateOfStartWork;
-    String category;
+    private long caseNumber;
+    private String dateOfStartWork;
+    private String category;
 }

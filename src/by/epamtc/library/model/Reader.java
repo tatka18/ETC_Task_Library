@@ -1,6 +1,8 @@
 package by.epamtc.library.model;
 
 public class Reader extends User {
-    String emailAddress;
-    String placeOfWorkOrStudying;
+    private String emailAddress;
+    private String placeOfWorkOrStudying;
+
+
 }

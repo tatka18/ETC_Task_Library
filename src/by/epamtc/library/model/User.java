@@ -3,7 +3,7 @@ package by.epamtc.library.model;
 import java.util.Objects;
 
 public class User {
-    long id;
+    private long id;
     private String firstName;
     private String lastName;
     private String login;

@@ -3,11 +3,11 @@ package by.epamtc.library.model;
 import java.util.Objects;
 
 public class Book {
-    long id;
-    String bookName;
-    String author;
-    int yearOfPublishing;
-    String category;
+    private long id;
+    private String bookName;
+    private String author;
+    private int yearOfPublishing;
+    private String category;
 
     public Book() {
     }
