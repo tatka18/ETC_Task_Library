@@ -1,5 +1,6 @@
 package by.epamtc.library.dao;
 
+import by.epamtc.library.dao.impl.BookDaoImpl;
 import by.epamtc.library.dao.impl.UserDaoImpl;
 
 public class DaoProvider {
@@ -8,6 +9,7 @@ public class DaoProvider {
     private DaoProvider(){};
 
     private UserDao userDao = new UserDaoImpl();
+    private BookDao bookDao = new BookDaoImpl();
 
     public static DaoProvider getInstance(){
         return instance;
@@ -23,4 +25,15 @@ public class DaoProvider {
         }
         return userDao;
     }
+    public BookDao getBookDao(){
+        if (bookDao == null) {
+            synchronized (BookDao.class) {
+                if (bookDao == null) {
+                    bookDao = new BookDaoImpl();
+                }
+            }
+        }
+        return bookDao;
+    }
+
 }
