@@ -10,14 +10,17 @@ public class Run {
         String request;
         String response;
 
-        request = "authorization login=asd password=asdfg";
+        request = "authorization login=Youk password=gh";
         response = controller.action(request);
         PrintResult.printString(response);
 
-        request = "registration login=ashjkd password=gh firstName=Dook lastName=AAss " +
+        request = "registration login=Youk password=gh firstName=Cool lastName=Nok " +
                 "mail=tyui@mail.ru userRole=reader";
         response = controller.action(request);
         PrintResult.printString(response);
+
+        request = "show_all_catalog";
+        response = controller.action(request);
 
     }
 }
