@@ -14,5 +14,10 @@ public class Run {
         response = controller.action(request);
         PrintResult.printString(response);
 
+        request = "registration login=ashjkd password=gh firstName=Dook lastName=AAss " +
+                "mail=tyui@mail.ru userRole=reader";
+        response = controller.action(request);
+        PrintResult.printString(response);
+
     }
 }

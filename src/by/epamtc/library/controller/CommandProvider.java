@@ -1,6 +1,7 @@
 package by.epamtc.library.controller;
 
 import by.epamtc.library.controller.impl.AuthorizationCommand;
+import by.epamtc.library.controller.impl.RegistrationCommand;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,6 +11,7 @@ public class CommandProvider {
 
     CommandProvider(){
         commands.put(CommandName.AUTHORIZATION, new AuthorizationCommand());
+        commands.put(CommandName.REGISTRATION, new RegistrationCommand());
     }
 
     public Command getCommand(String stringCommandName) {
