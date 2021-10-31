@@ -5,6 +5,7 @@ import by.epamtc.library.dao.FillObject;
 import by.epamtc.library.dao.UserDao;
 import by.epamtc.library.model.User;
 import by.epamtc.library.scaner.Scan;
+import by.epamtc.library.util.ListData;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -17,7 +18,7 @@ public class UserDaoImpl implements UserDao {
     public User authorization(String login, String password) throws DaoException{
         User user = new User();
         try{
-            List<String> stringList = Scan.readTextFromFile();
+            List<String> stringList = Scan.readTextFromFile(ListData.USERS);
             for (String string : stringList) {
                 user = fillObject.fillUser(string);
                 if(user.getPassword().equals(password) && user.getLogin().equals(login)) return user;
@@ -31,8 +32,8 @@ public class UserDaoImpl implements UserDao {
     @Override
     public boolean registration(String login, String password, String firstName,
                                 String lastName, String email, String userRole) throws DaoException {
-        try(FileWriter writer = new FileWriter("src/by/epamtc/resources/users.txt", true);) {
-            List<String> stringList = Scan.readTextFromFile();
+        try(FileWriter writer = new FileWriter(ListData.USERS, true);) {
+            List<String> stringList = Scan.readTextFromFile(ListData.USERS);
             int lastId = stringList.size();
 
             int id = lastId + 1;
@@ -41,7 +42,7 @@ public class UserDaoImpl implements UserDao {
 
             newString = nextLine + "id=" + id + " login=" + login + " password=" + password +
                     " firstName=" + firstName + " lastName=" + lastName + " mail=" + email +
-                    "userRole=" + userRole;
+                    " userRole=" + userRole;
             writer.write(newString);
 
         } catch (IOException e) {
