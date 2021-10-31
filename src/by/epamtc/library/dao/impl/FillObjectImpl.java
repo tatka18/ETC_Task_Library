@@ -21,7 +21,16 @@ public class FillObjectImpl implements FillObject {
 
     @Override
     public Book fillBook(String string) {
-        return null;
+        Book book = new Book();
+        String[] params = string.split(" ");
+
+        book.setId(Long.parseLong(parser(params[0])));
+        book.setBookName(parser(params[1]));
+        book.setAuthor(parser(params[2]));
+        book.setYearOfPublishing(Integer.parseInt(parser(params[3])));
+        book.setCategory(parser(params[4]));
+
+        return book;
     }
 
     private String parser(String string){
