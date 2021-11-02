@@ -22,5 +22,9 @@ public class Run {
         request = "show_all_catalog";
         response = controller.action(request);
 
+        request = "find_book_by_name name=Kooper";
+        response = controller.action(request);
+        PrintResult.printString(response);
+
     }
 }

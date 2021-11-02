@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface BookService {
     List<Book> findAllBooks() throws ServiceException;
-    Book findByName(String name);
+    Book findByName(String name) throws ServiceException;
 }

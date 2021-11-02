@@ -9,6 +9,7 @@ public class Controller {
 
         params = request.split(" ", 2);
         command = commandProvider.getCommand(params[0]);
+        if (params.length == 1) return command.execute(" ");
 
         return command.execute(params[1]);
     }

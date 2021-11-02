@@ -27,4 +27,21 @@ public class BookDaoImpl implements BookDao {
         }
         return bookList;
     }
+
+    @Override
+    public Book findByName(String name) throws DaoException {
+        try{
+            List<String> stringList = Scan.readTextFromFile(ListData.BOOKS);
+            for (String string: stringList){
+                Book book = fillObject.fillBook(string);
+                if(book.getBookName().equals(name)){
+                    return book;
+                }
+            }
+        }catch (IOException e){
+            throw new DaoException("error by finding book by name", e);
+        }
+
+        return null;
+    }
 }

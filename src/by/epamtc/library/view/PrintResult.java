@@ -13,5 +13,9 @@ public class PrintResult {
             System.out.println(book.getBookName() + " " + book.getAuthor());
         }
     }
+    public static void printBook(Book book){
+        System.out.println(book.getBookName() + " " + book.getAuthor() + " " + book.getCategory()
+        + " " + book.getYearOfPublishing());
+    }
 
 }

@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface BookDao {
     List<Book> findAllBooks() throws DaoException;
+    Book findByName(String name) throws DaoException;
 }

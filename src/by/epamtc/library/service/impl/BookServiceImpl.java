@@ -11,16 +11,23 @@ import java.util.List;
 public class BookServiceImpl implements BookService {
     @Override
     public List<Book> findAllBooks() throws ServiceException {
+        List<Book> bookList;
         try{
-            return DaoProvider.getInstance().getBookDao().findAllBooks();
+            bookList = DaoProvider.getInstance().getBookDao().findAllBooks();
         }catch (DaoException e){
             throw new ServiceException("error during findAllBooks", e);
         }
-
+        return bookList;
     }
 
     @Override
-    public Book findByName(String name) {
-        return null;
+    public Book findByName(String name) throws ServiceException {
+        Book book;
+        try{
+            book = DaoProvider.getInstance().getBookDao().findByName(name);
+        }catch (DaoException e){
+            throw new ServiceException("error during finding book by name", e);
+        }
+        return book;
     }
 }
