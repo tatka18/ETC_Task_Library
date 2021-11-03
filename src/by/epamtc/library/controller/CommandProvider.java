@@ -1,9 +1,6 @@
 package by.epamtc.library.controller;
 
-import by.epamtc.library.controller.impl.AuthorizationCommand;
-import by.epamtc.library.controller.impl.FindBookByName;
-import by.epamtc.library.controller.impl.RegistrationCommand;
-import by.epamtc.library.controller.impl.ShowAllCatalogCommand;
+import by.epamtc.library.controller.impl.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,6 +13,7 @@ public class CommandProvider {
         commands.put(CommandName.REGISTRATION, new RegistrationCommand());
         commands.put(CommandName.SHOW_ALL_CATALOG, new ShowAllCatalogCommand());
         commands.put(CommandName.FIND_BOOK_BY_NAME, new FindBookByName());
+        commands.put(CommandName.ADD_NEW_BOOK, new AddNewBookCommand());
     }
 
     public Command getCommand(String stringCommandName) {
