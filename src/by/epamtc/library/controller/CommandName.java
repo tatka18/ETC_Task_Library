@@ -7,5 +7,5 @@ public enum CommandName {
     FIND_BOOK_BY_AUTHOR,
     FIND_BOOK_BY_NAME,
     SHOW_ALL_CATALOG,
-    EDIT_BOOK;
+    EDIT_BOOK_CATEGORY;
 }
