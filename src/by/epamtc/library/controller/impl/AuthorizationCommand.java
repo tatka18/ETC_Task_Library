@@ -14,13 +14,14 @@ public class AuthorizationCommand implements Command {
         String login = params[0].substring(params[0].indexOf(divider) + 1);
         String password = params[1].substring(params[1].indexOf(divider) + 1);
 
-        StringBuilder result = new StringBuilder();
+        StringBuilder response = new StringBuilder();
         try{
             User user = ServiceProvider.getInstance().getUserService().authorization(login, password);
-            result.append(user.getFirstName()).append(" ").append(user.getLastName()).append(", welcome to our library!");
+            response.append(user.getFirstName()).append(" ").append(user.getLastName()).append(", welcome to our library!");
         } catch (ServiceException e) {
             e.printStackTrace();
+            response.append("Your login or password is not correct. Please, try again");
         }
-        return result.toString();
+        return response.toString();
     }
 }

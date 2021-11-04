@@ -12,13 +12,16 @@ public class EditBookCategoryCommand implements Command {
         String name = params[0].substring(params[0].indexOf(divider) + 1);
         String author = params[1].substring(params[1].indexOf(divider) + 1);
         String category = params[2].substring(params[2].indexOf(divider) + 1);
-        boolean result = false;
+
+        StringBuilder response = new StringBuilder();
         try{
-           result  = ServiceProvider.getInstance().getBookService().editBookCategory(name, author, category);
+           ServiceProvider.getInstance().getBookService().editBookCategory(name, author, category);
+           response.append("Book has been successfully edited");
         }catch(ServiceException e){
             e.printStackTrace();
+            response.append("Something went wrong. The book has not been edited");
         }
 
-        return "Book has been successfully edited " + result ;
+        return response.toString();
     }
 }

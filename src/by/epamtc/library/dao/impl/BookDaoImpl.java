@@ -63,8 +63,8 @@ public class BookDaoImpl implements BookDao {
 
             int id = lastId + 1;
             book.setId(id);
-            createStringBook(book);
-            writer.write(book.toString());
+            StringBuilder newBook = createStringBook(book);
+            writer.write(newBook.toString());
             writer.flush();
         }catch (IOException e){
             throw new DaoException( "Error during creating a new book", e);
@@ -98,7 +98,8 @@ public class BookDaoImpl implements BookDao {
 
     private StringBuilder createStringBook(Book book){
         StringBuilder newBookString = new StringBuilder();
-        newBookString.append("id=").append(book.getId())
+        newBookString.
+                append("id=").append(book.getId())
                 .append(" bookName=").append(book.getBookName())
                 .append(" author=").append(book.getAuthor())
                 .append(" yearOfPublishing=").append(book.getYearOfPublishing())

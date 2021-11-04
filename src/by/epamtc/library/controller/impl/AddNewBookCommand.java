@@ -15,15 +15,17 @@ public class AddNewBookCommand implements Command {
         String author = params[1].substring(params[1].indexOf(divider) + 1);
         int yearOfPublishing = Integer.parseInt(params[2].substring(params[2].indexOf(divider) + 1));
         String category = params[3].substring(params[3].indexOf(divider) + 1);
-        StringBuilder resultMessage = new StringBuilder();
+        StringBuilder response = new StringBuilder();
         try{
-            boolean result = ServiceProvider.getInstance().getBookService().createNewBook(bookName, author, yearOfPublishing, category);
+            boolean result = ServiceProvider.getInstance().getBookService()
+                    .createNewBook(bookName, author, yearOfPublishing, category);
             if(result){
-                resultMessage.append("The book ").append(bookName).append(" has been successfully created");
+                response.append("The book ").append(bookName).append(" has been successfully created");
             }
         }catch (ServiceException e){
             e.printStackTrace();
+            response.append("Something went wrong. Book hasn't been created");
         }
-        return resultMessage.toString();
+        return response.toString();
     }
 }
