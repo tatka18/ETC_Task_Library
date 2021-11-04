@@ -1,0 +1,4 @@
+id=1 bookName=Kingdom author=Henry yearOfPublishing=1999 category=electron
+id=8 bookName=Bulkin author=Henry yearOfPublishing=2005 category=paper
+id=3 bookName=Bulkin author=Henry yearOfPublishing=2005 category=paper
+id=4 bookName=Bulkin author=Henry yearOfPublishing=2005 category=paper

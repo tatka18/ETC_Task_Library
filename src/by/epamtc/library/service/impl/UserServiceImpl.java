@@ -19,7 +19,7 @@ public class UserServiceImpl implements UserService {
 
         User result;
         try{
-            result = DaoProvider.getInstance().getUserDao().authorization(login, password);
+            result = DaoProvider.getInstance().getUserDao().findByLoginAndPassword(login, password);
         }catch (DaoException e) {
             throw new ServiceException("exception authorization", e);
         }

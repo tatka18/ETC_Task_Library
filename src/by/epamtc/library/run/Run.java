@@ -26,5 +26,9 @@ public class Run {
         response = controller.action(request);
         PrintResult.printString(response);
 
+        request = "add_new_book bookName=Bulkin author=Henry yearOfPublishing=2005 category=paper";
+        response = controller.action(request);
+        PrintResult.printString(response);
+
     }
 }

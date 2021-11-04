@@ -10,17 +10,18 @@ public class FindBookByName implements Command {
     @Override
     public String execute(String request) {
         String divider = "=";
-
-        String result = "";
+        String result;
         String bookName = request.substring(request.indexOf(divider) + 1);
 
         try{
             Book book = ServiceProvider.getInstance().getBookService().findByName(bookName);
-            PrintResult.printBook(book);
+            if(book != null){
+                PrintResult.printBook(book);
+            }
         } catch (ServiceException e) {
             e.printStackTrace();
         }
-
+        result = "Sorry, but we didnt find the book with this name";
         return result;
     }
 }

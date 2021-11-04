@@ -1,0 +1,6 @@
+id=1 login=qwe password=123 firstName=Vadik lastName=Sadik mail=zxcvbnm@mail.ru userRole=admin
+id=2 login=asd password=asdfg firstName=Kostik lastName=Boun mail=tyui@mail.ru userRole=reader
+id=3 login=ghj password=rtyr firstName=Fool lastName=Sook mail=zxcvbnm@mail.ru userRole=reader
+id=4 login=ashjkd password=gh firstName=Dook lastName=AAss mail=tyui@mail.ru userRole=reader
+id=5 login=Youk password=gh firstName=Cool lastName=Nok mail=tyui@mail.ru userRole=reader
+id=6 login=Youk password=gh firstName=Cool lastName=Nok mail=tyui@mail.ru userRole=reader

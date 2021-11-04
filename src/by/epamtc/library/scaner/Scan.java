@@ -9,15 +9,14 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Scan {
-    public static List<String> readTextFromFile(String data) throws IOException {
-        List<String> stringList = new ArrayList<>();
+    public static List<StringBuilder> readTextFromFile(String data) throws IOException {
+        List<StringBuilder> stringList = new ArrayList<>();
         try{
-//            String fileName = "src/by/epamtc/resources/users.txt";
             Path path = Paths.get(data);
             Scanner scanner = new Scanner(path);
 
             while (scanner.hasNextLine()) {
-                stringList.add(scanner.nextLine());
+                stringList.add(new StringBuilder(scanner.nextLine()));
             }
         }catch (NoSuchFileException e){
             throw new IOException("problem with getting data from file", e);

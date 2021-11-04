@@ -15,12 +15,12 @@ public class UserDaoImpl implements UserDao {
     private final FillObject fillObject = new FillObjectImpl();
 
     @Override
-    public User authorization(String login, String password) throws DaoException{
+    public User findByLoginAndPassword(String login, String password) throws DaoException{
         User user = new User();
         try{
-            List<String> stringList = Scan.readTextFromFile(ListData.USERS);
-            for (String string : stringList) {
-                user = fillObject.fillUser(string);
+            List<StringBuilder> stringList = Scan.readTextFromFile(ListData.USERS);
+            for (StringBuilder string : stringList) {
+                user = fillObject.fillUser(string.toString());
                 if(user.getPassword().equals(password) && user.getLogin().equals(login)) return user;
             }
         }catch (IOException e){
@@ -32,22 +32,26 @@ public class UserDaoImpl implements UserDao {
     @Override
     public boolean registration(String login, String password, String firstName,
                                 String lastName, String email, String userRole) throws DaoException {
-        try(FileWriter writer = new FileWriter(ListData.USERS, true);) {
-            List<String> stringList = Scan.readTextFromFile(ListData.USERS);
+        try(FileWriter writer = new FileWriter(ListData.USERS, true)) {
+            List<StringBuilder> stringList = Scan.readTextFromFile(ListData.USERS);
             int lastId = stringList.size();
 
             int id = lastId + 1;
-            String nextLine = "\r\n";
-            String newString;
+            StringBuilder nextLine = new StringBuilder("\r\n");
+            StringBuilder newString;
 
-            newString = nextLine + "id=" + id + " login=" + login + " password=" + password +
-                    " firstName=" + firstName + " lastName=" + lastName + " mail=" + email +
-                    " userRole=" + userRole;
-            writer.write(newString);
+            newString = nextLine.append("id=").append(id)
+                    .append(" login=").append(login)
+                    .append(" password=").append(password)
+                    .append(" firstName=").append(firstName)
+                    .append(" lastName=").append(lastName)
+                    .append(" mail=").append(email)
+                    .append(" userRole=").append(userRole);
+            writer.write(newString.toString());
 
         } catch (IOException e) {
             throw new DaoException("Failed during registration", e);
         }
-        return false;
+        return true;
     }
 }

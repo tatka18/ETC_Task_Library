@@ -30,4 +30,15 @@ public class BookServiceImpl implements BookService {
         }
         return book;
     }
+
+    @Override
+    public boolean createNewBook(String bookName, String author, int yearOfPublishing, String category) throws ServiceException{
+        boolean result;
+        try{
+            result = DaoProvider.getInstance().getBookDao().createNewBook(bookName, author, yearOfPublishing, category);
+        }catch (DaoException e){
+            throw new ServiceException("Error during creating new book", e);
+        }
+        return result;
+    }
 }

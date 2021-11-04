@@ -1,7 +1,5 @@
 package by.epamtc.library.model;
 
-import java.util.Objects;
-
 public class Book {
     private long id;
     private String bookName;
@@ -57,16 +55,28 @@ public class Book {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
-        return id == book.id &&
-                yearOfPublishing == book.yearOfPublishing &&
-                Objects.equals(bookName, book.bookName) &&
-                Objects.equals(author, book.author) &&
-                Objects.equals(category, book.category);
+        if (bookName == null) {
+            if (book.bookName != null) return false;
+        } else if (!bookName.equals(book.bookName)) return false;
+        if (bookName == null) {
+            if (book.author != null) return false;
+        } else if (!author.equals(book.author)) return false;
+        if (category == null) {
+            if (book.category != null) return false;
+        } else if (!category.equals(book.category)) return false;
+        return id == book.id && yearOfPublishing == book.yearOfPublishing;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, bookName, author, yearOfPublishing, category);
+        int prime = 31;
+        int result = 1;
+        result = prime * result + ((bookName == null) ? 0 : bookName.hashCode());
+        result = prime * result + ((author == null) ? 0 : author.hashCode());
+        result = prime * result + ((category == null) ? 0 : category.hashCode());
+        result = prime * result + yearOfPublishing;
+        result = prime * result + (int)(id ^ (id >>> 32));
+        return result;
     }
 
     @Override
