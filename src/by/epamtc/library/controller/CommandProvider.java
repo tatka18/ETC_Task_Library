@@ -14,6 +14,7 @@ public class CommandProvider {
         commands.put(CommandName.SHOW_ALL_CATALOG, new ShowAllCatalogCommand());
         commands.put(CommandName.FIND_BOOK_BY_NAME, new FindBookByName());
         commands.put(CommandName.ADD_NEW_BOOK, new AddNewBookCommand());
+        commands.put(CommandName.EDIT_BOOK_CATEGORY, new EditBookCategoryCommand());
     }
 
     public Command getCommand(String stringCommandName) {

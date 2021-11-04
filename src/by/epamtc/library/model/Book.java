@@ -10,6 +10,13 @@ public class Book {
     public Book() {
     }
 
+    public Book(String bookName, String author, int yearOfPublishing, String category) {
+        this.bookName = bookName;
+        this.author = author;
+        this.yearOfPublishing = yearOfPublishing;
+        this.category = category;
+    }
+
     public String getBookName() {
         return bookName;
     }
