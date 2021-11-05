@@ -32,7 +32,8 @@ public class RegistrationCommand implements Command {
                 response.append("Sorry, but you have no rights for user registration!");
             }
         } catch (ServiceException e) {
-            response.append("Error. Registration is NOT completed. Try again");
+
+            System.out.println("Error. Registration is NOT completed. Try again : " + e.getMessage());
         }
         return response.toString();
     }

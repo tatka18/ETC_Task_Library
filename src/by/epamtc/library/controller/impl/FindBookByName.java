@@ -20,8 +20,7 @@ public class FindBookByName implements Command {
                 response.append("Sorry, but we haven't the book with this name");
             }
         } catch (ServiceException e) {
-            e.printStackTrace();
-            response.append("Something went wrong. We can't find book");
+            System.out.println("Something went wrong. We can't find book" + e.getMessage());
         }
         return response.toString();
     }

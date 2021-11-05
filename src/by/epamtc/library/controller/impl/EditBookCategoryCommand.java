@@ -18,8 +18,7 @@ public class EditBookCategoryCommand implements Command {
            ServiceProvider.getInstance().getBookService().editBookCategory(name, author, category);
            response.append("Book has been successfully edited");
         }catch(ServiceException e){
-            e.printStackTrace();
-            response.append("Something went wrong. The book has not been edited");
+            System.out.println("Something went wrong. The book has not been edited: " + e.getMessage());
         }
 
         return response.toString();

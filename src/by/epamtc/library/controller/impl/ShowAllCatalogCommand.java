@@ -17,8 +17,7 @@ public class ShowAllCatalogCommand implements Command {
                 response.append(book.toString()).append("\n");
             }
         }catch (ServiceException e){
-            e.printStackTrace();
-            response.append("Something went wrong. We cant show you all catalog");
+            System.out.println("Something went wrong. We cant show you all catalog: " + e.getMessage() );
         }
         return response.toString();
     }

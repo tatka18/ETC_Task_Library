@@ -13,7 +13,7 @@ public class AddNewBookCommand implements Command {
 
         String bookName = params[0].substring(params[0].indexOf(divider) + 1);
         String author = params[1].substring(params[1].indexOf(divider) + 1);
-        int yearOfPublishing = Integer.parseInt(params[2].substring(params[2].indexOf(divider) + 1));
+        String yearOfPublishing = params[2].substring(params[2].indexOf(divider) + 1);
         String category = params[3].substring(params[3].indexOf(divider) + 1);
         StringBuilder response = new StringBuilder();
         try{
@@ -21,10 +21,11 @@ public class AddNewBookCommand implements Command {
                     .createNewBook(bookName, author, yearOfPublishing, category);
             if(result){
                 response.append("The book ").append(bookName).append(" has been successfully created");
+            }else {
+                response.append("Something went wrong. Book hasn't been created");
             }
         }catch (ServiceException e){
-            e.printStackTrace();
-            response.append("Something went wrong. Book hasn't been created");
+            System.out.println(e.getMessage());
         }
         return response.toString();
     }

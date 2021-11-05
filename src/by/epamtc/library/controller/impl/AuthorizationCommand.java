@@ -21,8 +21,7 @@ public class AuthorizationCommand implements Command {
             CashClass.setCashedUserRole(user.getUserRole());
             response.append(user.getFirstName()).append(" ").append(user.getLastName()).append(", welcome to our library!");
         } catch (ServiceException e) {
-            e.printStackTrace();
-            response.append("Your login or password is not correct. Please, try again");
+            System.out.println(e.getMessage());
         }
         return response.toString();
     }
