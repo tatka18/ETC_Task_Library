@@ -1,6 +1,7 @@
 package by.epamtc.library.controller.impl;
 
 import by.epamtc.library.controller.Command;
+import by.epamtc.library.controller.CashClass;
 import by.epamtc.library.service.ServiceException;
 import by.epamtc.library.service.ServiceProvider;
 import by.epamtc.library.service.UserService;
@@ -22,9 +23,14 @@ public class RegistrationCommand implements Command {
         String userRole = params[5].substring(params[5].indexOf(divider) + 1);
 
         StringBuilder response = new StringBuilder();
+
         try {
-            service.registration(login,password,firstName, lastName, email, userRole);
-            response.append("Registration is successfully completed!");
+            if(CashClass.getCashedUserRole().equals("admin")) {
+                service.registration(login,password,firstName, lastName, email, userRole);
+                response.append("Registration is successfully completed!");
+            }else {
+                response.append("Sorry, but you have no rights for user registration!");
+            }
         } catch (ServiceException e) {
             response.append("Error. Registration is NOT completed. Try again");
         }
