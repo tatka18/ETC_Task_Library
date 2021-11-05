@@ -7,6 +7,6 @@ import java.util.List;
 public interface BookService {
     List<Book> findAllBooks() throws ServiceException;
     Book findByName(String name) throws ServiceException;
-    boolean createNewBook(String bookName, String author, int yearOfPublishing, String category) throws ServiceException;
+    boolean createNewBook(String bookName, String author, String yearOfPublishing, String category) throws ServiceException;
     boolean editBookCategory(String name, String author, String category) throws ServiceException;
 }
