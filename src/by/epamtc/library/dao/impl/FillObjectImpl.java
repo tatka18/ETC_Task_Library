@@ -15,6 +15,8 @@ public class FillObjectImpl implements FillObject {
         user.setPassword(parser(params[2]));
         user.setFirstName(parser(params[3]));
         user.setLastName(parser(params[4]));
+        user.setMail(parser(params[5]));
+        user.setUserRole(parser(params[6]));
 
         return user;
     }

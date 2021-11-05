@@ -6,6 +6,8 @@ public class User {
     private String lastName;
     private String login;
     private String password;
+    private String mail;
+    private String userRole;
 
     public User() {
     }
@@ -55,6 +57,22 @@ public class User {
         this.id = id;
     }
 
+    public String getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(String userRole) {
+        this.userRole = userRole;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -72,6 +90,12 @@ public class User {
         if (password == null) {
             if (user.password != null) return false;
         } else if (!password.equals(user.password)) return false;
+        if (userRole == null) {
+            if (user.userRole != null) return false;
+        } else if (!userRole.equals(user.userRole)) return false;
+        if (mail == null) {
+            if (user.mail != null) return false;
+        } else if (!mail.equals(user.mail)) return false;
         return id == user.id;
     }
 
@@ -83,6 +107,8 @@ public class User {
         result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
         result = prime * result + ((login == null) ? 0 : login.hashCode());
         result = prime * result + ((password == null) ? 0 : password.hashCode());
+        result = prime * result + ((userRole == null) ? 0 : userRole.hashCode());
+        result = prime * result + ((mail == null) ? 0 : mail.hashCode());
         result = prime * result + (int)(id ^ (id >>> 32));
         return result;
     }
@@ -95,6 +121,8 @@ public class User {
                 ", lastName='" + lastName + '\'' +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
+                ", mail='" + mail + '\'' +
+                ", userRole='" + userRole + '\'' +
                 '}';
     }
 }
