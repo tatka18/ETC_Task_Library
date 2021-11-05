@@ -7,11 +7,10 @@ import by.epamtc.library.service.ServiceProvider;
 public class EditBookCategoryCommand implements Command {
     @Override
     public String execute(String request) {
-        String divider = "=";
         String[] params = request.split(" ", 3);
-        String name = params[0].substring(params[0].indexOf(divider) + 1);
-        String author = params[1].substring(params[1].indexOf(divider) + 1);
-        String category = params[2].substring(params[2].indexOf(divider) + 1);
+        String name = valueParser(params[0]);
+        String author = valueParser(params[1]);
+        String category = valueParser(params[2]);
 
         StringBuilder response = new StringBuilder();
         try{
@@ -22,5 +21,8 @@ public class EditBookCategoryCommand implements Command {
         }
 
         return response.toString();
+    }
+    public String valueParser(String string){
+        return string.substring(string.indexOf("=") + 1);
     }
 }

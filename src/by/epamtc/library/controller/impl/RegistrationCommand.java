@@ -10,17 +10,16 @@ public class RegistrationCommand implements Command {
     @Override
     public String execute(String request) {
         String[] params;
-        String divider = "=";
 
         UserService service = ServiceProvider.getInstance().getUserService();
         params = request.split(" ", 6);
 
-        String login = params[0].substring(params[0].indexOf(divider) + 1);
-        String password = params[1].substring(params[1].indexOf(divider) + 1);
-        String firstName = params[2].substring(params[2].indexOf(divider) + 1);
-        String lastName = params[3].substring(params[3].indexOf(divider) + 1);
-        String email = params[4].substring(params[4].indexOf(divider) + 1);
-        String userRole = params[5].substring(params[5].indexOf(divider) + 1);
+        String login = valueParser(params[0]);
+        String password = valueParser(params[1]);
+        String firstName = valueParser(params[2]);
+        String lastName = valueParser(params[3]);
+        String email = valueParser(params[4]);
+        String userRole = valueParser(params[5]);
 
         StringBuilder response = new StringBuilder();
 
@@ -36,5 +35,8 @@ public class RegistrationCommand implements Command {
             System.out.println("Error. Registration is NOT completed. Try again : " + e.getMessage());
         }
         return response.toString();
+    }
+    public String valueParser(String string){
+        return string.substring(string.indexOf("=") + 1);
     }
 }

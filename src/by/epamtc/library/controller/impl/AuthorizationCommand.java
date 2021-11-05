@@ -10,10 +10,9 @@ public class AuthorizationCommand implements Command {
     @Override
     public String execute(String request) {
         String []params = request.split(" ", 2);
-        String divider = "=";
 
-        String login = params[0].substring(params[0].indexOf(divider) + 1);
-        String password = params[1].substring(params[1].indexOf(divider) + 1);
+        String login = valueParser(params[0]);
+        String password = valueParser(params[1]);
 
         StringBuilder response = new StringBuilder();
         try{
@@ -24,5 +23,9 @@ public class AuthorizationCommand implements Command {
             System.out.println(e.getMessage());
         }
         return response.toString();
+    }
+
+    public String valueParser(String string){
+        return string.substring(string.indexOf("=") + 1);
     }
 }

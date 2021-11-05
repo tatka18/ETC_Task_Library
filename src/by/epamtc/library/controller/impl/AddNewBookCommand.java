@@ -9,12 +9,11 @@ public class AddNewBookCommand implements Command {
     public String execute(String request) {
         String[] params;
         params = request.split(" ", 4);
-        String divider = "=";
 
-        String bookName = params[0].substring(params[0].indexOf(divider) + 1);
-        String author = params[1].substring(params[1].indexOf(divider) + 1);
-        String yearOfPublishing = params[2].substring(params[2].indexOf(divider) + 1);
-        String category = params[3].substring(params[3].indexOf(divider) + 1);
+        String bookName = valueParser(params[0]);
+        String author = valueParser(params[1]);
+        String yearOfPublishing = valueParser(params[2]);
+        String category = valueParser(params[3]);
         StringBuilder response = new StringBuilder();
         try{
             boolean result = ServiceProvider.getInstance().getBookService()
@@ -28,5 +27,8 @@ public class AddNewBookCommand implements Command {
             System.out.println(e.getMessage());
         }
         return response.toString();
+    }
+    public String valueParser(String string){
+        return string.substring(string.indexOf("=") + 1);
     }
 }
