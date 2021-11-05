@@ -2,6 +2,7 @@ package by.epamtc.library.controller.impl;
 
 import by.epamtc.library.controller.Command;
 import by.epamtc.library.model.User;
+import by.epamtc.library.controller.CashClass;
 import by.epamtc.library.service.ServiceException;
 import by.epamtc.library.service.ServiceProvider;
 
@@ -17,6 +18,7 @@ public class AuthorizationCommand implements Command {
         StringBuilder response = new StringBuilder();
         try{
             User user = ServiceProvider.getInstance().getUserService().authorization(login, password);
+            CashClass.setCashedUserRole(user.getUserRole());
             response.append(user.getFirstName()).append(" ").append(user.getLastName()).append(", welcome to our library!");
         } catch (ServiceException e) {
             e.printStackTrace();
