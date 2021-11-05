@@ -56,7 +56,7 @@ public class BookDaoImpl implements BookDao {
     }
 
     @Override
-    public boolean createNewBook(Book book) throws DaoException {
+    public boolean addNewBook(Book book) throws DaoException {
         try(FileWriter writer = new FileWriter(ListData.BOOKS, true)){
             List<Book> bookList = createBookList();
             int lastId = bookList.size();

@@ -8,6 +8,6 @@ public interface BookDao {
     List<Book> findAllBooks() throws DaoException;
     Book findByName(String name) throws DaoException;
     Book findByNameAndAuthor(String name, String author) throws DaoException;
-    boolean createNewBook(Book book) throws DaoException;
+    boolean addNewBook(Book book) throws DaoException;
     boolean editBookDataFile(List<Book> list) throws DaoException;
 }
