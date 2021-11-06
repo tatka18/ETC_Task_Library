@@ -9,11 +9,13 @@ public class ServiceProvider {
     private static UserService userService = new UserServiceImpl();
     private static BookService bookService = new BookServiceImpl();
 
+    private ServiceProvider(){}
+
     public static ServiceProvider getInstance(){
         return instance;
     }
 
-    public UserService getUserService(){
+    public static UserService getUserService(){
         if (userService == null){
             synchronized (UserService.class){
                 if(userService == null){
