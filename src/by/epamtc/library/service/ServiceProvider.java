@@ -15,7 +15,7 @@ public class ServiceProvider {
         return instance;
     }
 
-    public static UserService getUserService(){
+    public UserService getUserService(){
         if (userService == null){
             synchronized (UserService.class){
                 if(userService == null){
