@@ -1,6 +1,10 @@
 package by.epamtc.library.model;
 
-public class Book {
+import java.io.Serializable;
+
+public class Book implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     private long id;
     private String bookName;
     private String author;
@@ -82,7 +86,7 @@ public class Book {
         result = prime * result + ((author == null) ? 0 : author.hashCode());
         result = prime * result + ((category == null) ? 0 : category.hashCode());
         result = prime * result + yearOfPublishing;
-        result = prime * result + (int)(id ^ (id >>> 32));
+        result = prime * result + (int) (id ^ (id >>> 32));
         return result;
     }
 

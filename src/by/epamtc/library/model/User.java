@@ -1,6 +1,10 @@
 package by.epamtc.library.model;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     private long id;
     private String firstName;
     private String lastName;
@@ -109,7 +113,7 @@ public class User {
         result = prime * result + ((password == null) ? 0 : password.hashCode());
         result = prime * result + ((userRole == null) ? 0 : userRole.hashCode());
         result = prime * result + ((mail == null) ? 0 : mail.hashCode());
-        result = prime * result + (int)(id ^ (id >>> 32));
+        result = prime * result + (int) (id ^ (id >>> 32));
         return result;
     }
 
